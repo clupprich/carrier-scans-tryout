@@ -1,0 +1,38 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+to_normalize:
+  status: unknown
+  source_id: <%= SecureRandom.uuid %>
+  carrier: EVRi
+  message: It's a test.
+  tracking_number: <%= SecureRandom.hex(16) %>
+  payload: { status: "AWAITING COLLECTION" }
+
+pushed:
+  status: delivered
+  source_id: <%= SecureRandom.uuid %>
+  carrier: EVRi
+  message: It's a test.
+  tracking_number: <%= SecureRandom.hex(16) %>
+  pushed_at: <%= 5.minutes.ago %>
+
+pushable:
+  status: delivered
+  source_id: <%= SecureRandom.uuid %>
+  carrier: EVRi
+  message: It's a test.
+  tracking_number: <%= SecureRandom.hex(16) %>
+
+first_delivery_attempt:
+  status: failure
+  source_id: <%= SecureRandom.uuid %>
+  carrier: EVRi
+  message: DELIVERY ATTEMPTED
+  tracking_number: DELIVERY_ATTEMPTED
+
+second_delivery_attempt:
+  status: failure
+  source_id: <%= SecureRandom.uuid %>
+  carrier: EVRi
+  message: DELIVERY WILL BE ATTEMPTED BETWEEN 07:00 AND 08:00
+  tracking_number: DELIVERY_ATTEMPTED

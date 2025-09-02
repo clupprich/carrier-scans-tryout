@@ -26,7 +26,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "dotenv", "~> 3.1" # Loads environment variables from `.env`. [https://github.com/bkeepers/dotenv]
   gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "rubocop-minitest", "~> 0.38.1" # Automatic Minitest code style checking tool. [https://github.com/rubocop/rubocop-minitest]
+  gem "rubocop-minitest", "~> 0.38.2" # Automatic Minitest code style checking tool. [https://github.com/rubocop/rubocop-minitest]
   gem "rubocop-performance", "~> 1.25" # Automatic performance optimizations in Ruby code. [https://github.com/rubocop/rubocop-performance/]
   gem "rubocop-rails-omakase", require: false # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 end

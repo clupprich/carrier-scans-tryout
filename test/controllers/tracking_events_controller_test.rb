@@ -23,11 +23,11 @@ class TrackingEventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  test "recognizes differently formatted tracking event statuses" do
+  test "stores all tracking events with an unknown status" do
     post tracking_events_path, params: @payload, headers: { "x-gfs-token" => @token }
     last_tracking_event = TrackingEvent.last
 
-    assert_equal "out_for_delivery", last_tracking_event.status
+    assert_equal "unknown", last_tracking_event.status
   end
 
   test "unrecognized tracking statuses are stored with an unknown status" do

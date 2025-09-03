@@ -9,14 +9,12 @@ class TrackingEventsController < ActionController::API
   before_action :authorize_request!
 
   def create
-    tracking_status = TrackingEvent.normalize_value_for(:status, tracking_event_params[:status])
-
     TrackingEvent.create!(
       source_id: tracking_event_params[:gfsId],
       carrier: tracking_event_params[:carrierName],
       message: tracking_event_params[:text],
       tracking_number: tracking_event_params[:parcelNumber],
-      status: TrackingEvent.statuses.include?(tracking_status) ? tracking_status : :unknown,
+      status: :unknown,
       payload: tracking_event_params.except(:tracking_events)
     )
 

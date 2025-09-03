@@ -22,9 +22,13 @@ class TrackingEvent
     #
     # @return [String, nil]
     def detect_by_status
-      case TrackingEvent.normalize_value_for(:status, payload["status"])
+      tracking_status = TrackingEvent.normalize_value_for(:status, payload["status"])
+
+      case tracking_status
       when "awaiting_collection"
         "waiting"
+      when TrackingEvent.statuses.include?(tracking_status)
+        tracking_status
       else
         nil
       end

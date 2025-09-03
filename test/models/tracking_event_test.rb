@@ -11,6 +11,14 @@ class TrackingEventTest < ActiveSupport::TestCase
     end
   end
 
+  test "stores an 'in transit' status as failure" do
+    to_normalize_tracking_event = tracking_events(:to_normalize_in_transit)
+
+    assert_changes -> { to_normalize_tracking_event.reload.status }, to: "failure" do
+      to_normalize_tracking_event.detect_status
+    end
+  end
+
   test "schedules a tracking event with an unknown to be normalized after creation" do
     assert_enqueued_jobs 1, only: TrackingEvents::StatusDetectionJob do
       TrackingEvent.create!(source_id: SecureRandom.uuid, carrier: "FedEx", message: "Something unknown", tracking_number: SecureRandom.hex(16))

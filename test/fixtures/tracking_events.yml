@@ -8,6 +8,14 @@ to_normalize:
   tracking_number: <%= SecureRandom.hex(16) %>
   payload: { status: "AWAITING COLLECTION" }
 
+to_normalize_in_transit:
+  status: unknown
+  source_id: <%= SecureRandom.uuid %>
+  carrier: EVRi
+  message: It's a test.
+  tracking_number: <%= SecureRandom.hex(16) %>
+  payload: { status: "IN TRANSIT" }
+
 pushed:
   status: delivered
   source_id: <%= SecureRandom.uuid %>

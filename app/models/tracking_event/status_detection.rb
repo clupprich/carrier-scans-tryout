@@ -27,6 +27,8 @@ class TrackingEvent
       case tracking_status
       when "awaiting_collection"
         "waiting"
+      when "in_transit"
+        "failure"
       when TrackingEvent.statuses.include?(tracking_status)
         tracking_status
       else
